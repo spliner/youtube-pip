@@ -1,4 +1,4 @@
 youtube-pip
 ===========
 
-Picture in picture for Youtube
+Picture in picture for Youtube.
