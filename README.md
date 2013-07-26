@@ -11,7 +11,7 @@ YouTube PIP is a Chrome extension that enables picture in picture for YouTube vi
 
 After following these steps, an icon should appear in your omnibar everytime you navigate to an YouTube video page. Just click it to watch it in PIP.
 
-##Displaying PIP in a Panel
+##Displaying PIP in a Chrome Panel
 A couple of steps are required in order to effectively display videos in a Chrome panel. If these steps are not performed, videos will be displayed in a regular popup window.
 * Open chrome://flags
 * Make sure the 'Enable Panels' option is enabled
