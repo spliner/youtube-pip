@@ -8,7 +8,7 @@ var defaultPanelWidth = 480;
 function onTabUpdated(tabId, changeInfo, tab) {
 	if (tab.url.indexOf('youtube.com') > -1 && tab.url.indexOf('watch?') > -1) {
 		chrome.pageAction.show(tab.id);
-		chrome.tabs.executeScript(tab.id, { file: 'contentscript.js' });
+		chrome.tabs.executeScript(tab.id, { file: '/js/contentscript.js' });
 	} else {
 		chrome.pageAction.hide(tab.id);
 	}
@@ -61,7 +61,7 @@ function createVideoPanel(parameters) {
 	videoParameters.push('height=240');
 	videoParameters.push('width=320');
 	videoParameters.push('autoplay=1');
-	chrome.windows.create({ url: 'player.html?' + parameters + '&' + videoParameters.join('&'), type: 'panel', height: defaultPanelHeight, width: defaultPanelWidth }, function(window) { window.alwaysOnTop = true; });
+	chrome.windows.create({ url: '/app/player.html?' + parameters + '&' + videoParameters.join('&'), type: 'panel', height: defaultPanelHeight, width: defaultPanelWidth }, function(window) { window.alwaysOnTop = true; });
 }
 
 function getUrlVars(url) {

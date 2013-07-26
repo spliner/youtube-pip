@@ -2,7 +2,7 @@
   "name": "Youtube PIP",
   "version": "0.2.0",
   "manifest_version": 2,
-  "description": "Picture in picture for Youtube.",
+  "description": "Picture in picture for YouTube.",
   "icons": 
   {
 	"16": "images/icon16.png",
@@ -21,7 +21,7 @@
   "background": 
   { 
 	"persistent": true,
-	"page": "background.html"
+	"page": "/app/background.html"
   },
   "permissions" : 
   [
