@@ -1,5 +1,6 @@
 # SublimeText project files
 *.sublime-workspace
+*.sublime-project
 
 # OS generated files #
 .DS_Store
