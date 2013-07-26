@@ -16,5 +16,5 @@ A couple of steps are required in order to effectively display videos in a Chrom
 * Open chrome://flags
 * Make sure the 'Enable Panels' option is enabled
 
-##Known issues
+##Known Issues
 YouTube PIP is unable to display videos that cannot be embedded.
