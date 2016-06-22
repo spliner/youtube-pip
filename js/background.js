@@ -36,7 +36,7 @@ function handleContentScriptResponse(response) {
 function onContextMenuClick(clickInfo) {
 	var url = clickInfo.linkUrl;
 	var playParameters = new Array();
-	if (url.indexOf('youtube.com') > -1 && (url.indexOf('/watch/') > -1 || url.indexOf('/embed/') >-1)) {
+	if (url.indexOf('youtube.com') > -1 && (url.indexOf('/watch') > -1 || url.indexOf('/embed') >-1)) {
 		var videoId = '';
 		var listId = '';
 		if (url.indexOf('/embed/') > -1) {
