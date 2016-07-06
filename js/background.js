@@ -1,6 +1,6 @@
 chrome.tabs.onUpdated.addListener(onTabUpdated);
 chrome.pageAction.onClicked.addListener(onPageActionClicked);
-chrome.contextMenus.create({ title: 'Open in PIP', contexts: ['video', 'link'], onclick: function(info, tab) { onContextMenuClick(info); } });
+chrome.contextMenus.create({ title: 'Open in PIP', contexts: ['video', 'link'], onclick: function(info) { onContextMenuClick(info); } });
 
 var defaultPanelHeight = 360;
 var defaultPanelWidth = 480;
@@ -21,21 +21,16 @@ function onPageActionClicked(tab) {
 }
 
 function handleContentScriptResponse(response) {
-	if (response) {
-		if (response.farewell.indexOf('Error') === -1) {
-			createVideoPanel(response.farewell);
-		}
-		else {
-			console.log('Error creating video: ' + response.farewell);
-		}
+	if (!!response) {
+		createVideoPanel(response.parameters);
 	} else {
-		console.log('Error handling content script response: null response');
+		console.log('Error handling content script response: empty response');
 	}
 }
 
 function onContextMenuClick(clickInfo) {
 	var url = clickInfo.linkUrl;
-	var playParameters = new Array();
+	var playParameters = [];
 	if (url.indexOf('youtube.com') > -1 && (url.indexOf('/watch') > -1 || url.indexOf('/embed') >-1)) {
 		var videoId = '';
 		var listId = '';
@@ -43,7 +38,7 @@ function onContextMenuClick(clickInfo) {
 			videoId = url.split('/embed/')[1];
 			var parametersPosition = videoId.indexOf('?');
 			if (parametersPosition > -1)
-				videoId = videoId.subString(0, parametersPosition);
+				videoId = videoId.substring(0, parametersPosition);
 			listId = getUrlVars(url)['list'];
 		} else {
 			videoId = getUrlVars(url)['v'];
@@ -57,7 +52,7 @@ function onContextMenuClick(clickInfo) {
 }
 
 function createVideoPanel(parameters) {
-	var videoParameters = new Array();
+	var videoParameters = [];
 	videoParameters.push('height=240');
 	videoParameters.push('width=320');
 	videoParameters.push('autoplay=1');
@@ -66,7 +61,7 @@ function createVideoPanel(parameters) {
 
 function getUrlVars(url) {
     var vars = {};
-    var parts = url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+    url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
         vars[key] = value;
     });
     return vars;

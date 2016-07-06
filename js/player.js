@@ -13,10 +13,13 @@ function playVideo() {
 	embedUrl += videoId;
 	embedUrl += '?autoplay=' + autoplay;
 	embedUrl += '&autohide=1';
-	if (playlistId)
-		embedUrl += '&list=' + playlistId;
-	if (time)
-		embedUrl += '&start=' + time;
+    
+	if (playlistId) {
+        embedUrl += '&list=' + playlistId;
+	}
+	if (time) {
+        embedUrl += '&start=' + time;
+    }
 	
 	var playerContainer = document.getElementById('player-container');
 	var frame = document.createElement('iframe');
@@ -29,7 +32,7 @@ function playVideo() {
 
 function getUrlVars() {
     var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
         vars[key] = value;
     });
     return vars;
