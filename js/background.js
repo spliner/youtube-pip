@@ -1,6 +1,11 @@
 chrome.tabs.onUpdated.addListener(onTabUpdated);
 chrome.pageAction.onClicked.addListener(onPageActionClicked);
-chrome.contextMenus.create({ title: 'Open in PIP', contexts: ['video', 'link'], onclick: function(info) { onContextMenuClick(info); } });
+chrome.contextMenus.create({
+	title: 'Open in PIP',
+    contexts: ['video', 'link'],
+    targetUrlPatterns: ['*://*.youtube.com/watch*', '*://*.youtube.com/embed*'],
+    onclick: onContextMenuClick
+});
 
 var defaultPanelHeight = 360;
 var defaultPanelWidth = 480;
