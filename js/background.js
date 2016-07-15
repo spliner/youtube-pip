@@ -11,7 +11,7 @@ var defaultPanelHeight = 360;
 var defaultPanelWidth = 480;
 
 function onTabUpdated(tabId, changeInfo, tab) {
-	if (tab.url.indexOf('youtube.com') > -1 && tab.url.indexOf('watch?') > -1) {
+	if (isTabValid_(tab)) {
 		chrome.pageAction.show(tab.id);
 		chrome.tabs.executeScript(tab.id, { file: '/js/contentscript.js' });
 	} else {
@@ -35,7 +35,7 @@ function handleContentScriptResponse(response) {
 
 function onContextMenuClick(clickInfo) {
 	var url = clickInfo.linkUrl;
-	var playParameters = [];
+	var playParameters = ['type=youtube'];
 	if (url.indexOf('youtube.com') > -1 && (url.indexOf('/watch') > -1 || url.indexOf('/embed') >-1)) {
 		var videoId = '';
 		var listId = '';
@@ -62,6 +62,11 @@ function createVideoPanel(parameters) {
 	videoParameters.push('width=320');
 	videoParameters.push('autoplay=1');
 	chrome.windows.create({ url: '/app/player.html?' + parameters + '&' + videoParameters.join('&'), type: 'panel', height: defaultPanelHeight, width: defaultPanelWidth }, function(window) { window.alwaysOnTop = true; });
+}
+
+function isTabValid_(tab) {
+	return tab.url.indexOf('twitch.tv') > 1 
+		|| (tab.url.indexOf('youtube.com') > -1 && tab.url.indexOf('watch?') > -1);
 }
 
 function getUrlVars(url) {

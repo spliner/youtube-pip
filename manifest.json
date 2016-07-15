@@ -26,10 +26,12 @@
   "permissions" : 
   [
     "tabs",
-	"contextMenus",
-	"http://www.youtube.com/",
-	"https://www.youtube.com/",
-	"http://www.youtube.com/embed/",
-	"https://www.youtube.com/embed/"
+    "contextMenus",
+    "http://www.youtube.com/",
+    "https://www.youtube.com/",
+    "http://www.youtube.com/embed/",
+    "https://www.youtube.com/embed/",
+    "http://www.twitch.tv/",
+    "https://www.twitch.tv/"
   ]
 }
