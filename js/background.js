@@ -7,7 +7,7 @@ chrome.contextMenus.create({
     onclick: onContextMenuClick
 });
 
-var defaultPanelHeight = 360;
+var defaultPanelHeight = 306;
 var defaultPanelWidth = 480;
 
 function onTabUpdated(tabId, changeInfo, tab) {
